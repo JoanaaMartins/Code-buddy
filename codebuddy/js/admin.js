@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const messageForm = document.getElementById('messageForm');
     const messageContent = document.getElementById('messageContent');
 
+
     function showPopupAlert(message, icon = 'success') {
         return Swal.fire({
             text: message,
@@ -148,9 +149,9 @@ document.addEventListener("DOMContentLoaded", function() {
             const row = document.createElement('tr');
             row.classList.add('data');
 
-            const caminhoCell = document.createElement('td');
-            caminhoCell.textContent = post.caminho;
-            row.appendChild(caminhoCell);
+            const questionCell = document.createElement('td');
+            questionCell.textContent = post.caminho;
+            row.appendChild(questionCell);
 
             const linkCell = document.createElement('td');
             if (post.link) {
@@ -165,7 +166,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
             tableBody.appendChild(row);
         });
-    }
+    } 
+
 //caregar tabela dos users
     function loadUsersToTable() {
         const users = User.getUsers();
@@ -203,9 +205,36 @@ document.addEventListener("DOMContentLoaded", function() {
 
             tableBody.appendChild(row);
         });
-    }
+    }  
 
-    // Ensure the admin check is before any other user actions
+//perguntas
+function loadChallengeToTable() {
+    let challenge = JSON.parse(localStorage.getItem("challengeContents"))
+    const tableBody = document.getElementById('questions_table');
+
+
+    
+    challenge.forEach(chal => {
+        const row = document.createElement('tr');
+        row.classList.add('dataChallenge');
+
+        const questionCell = document.createElement('td');
+        questionCell.textContent = chal.question;
+        row.appendChild(questionCell);
+
+        const answerCell = document.createElement('td');
+        answerCell.textContent = chal.answer;
+        row.appendChild(answerCell);
+
+        const tipCell = document.createElement('td');
+        tipCell.textContent = chal.tip;
+        row.appendChild(tipCell);
+
+        tableBody.appendChild(row);
+    });
+} 
+
+    // Ensure the admin check is before any other challenge actions
     if (!User.isLogged() || !User.getUserLogged().isAdmin) {
         showPopupAlert('Acesso negado', 'error').then(() => {
             window.location.href = '/codebuddy/index.html';
@@ -216,7 +245,8 @@ document.addEventListener("DOMContentLoaded", function() {
     // Iniciar os users
     User.init();
     loadUsersToTable(); 
-    loadPostsToTable();
+    loadPostsToTable(); 
+    loadChallengeToTable();
 
     // Event listeners
     openSendNotif.addEventListener('click', function() {
