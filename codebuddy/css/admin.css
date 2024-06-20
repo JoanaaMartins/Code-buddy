@@ -200,6 +200,13 @@ header{
     padding: 20px;
 } 
 
+#answer, #question, #tip {
+    font-size: 20px;
+    background-color: transparent;
 
+        border: 2px solid black;
+        border-radius:20px;
+        width: 90%;
+        margin-left:3%;
 
-
+}
