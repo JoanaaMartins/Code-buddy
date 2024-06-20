@@ -213,9 +213,19 @@ function loadChallengeToTable() {
     let challenge = JSON.parse(localStorage.getItem("challengeContents"));
     const tableBody = document.getElementById('questions_table');
 
+    tableBody.innerHTML = ''; // Clear existing content
+
     challenge.forEach(chal => {
         const row = document.createElement('tr');
         row.classList.add('dataChallenge');
+
+        const radioCell = document.createElement('td');
+        const radioInput = document.createElement('input');
+        radioInput.type = 'radio';
+        radioInput.name = 'selectedChallenge';
+        radioInput.value = chal.question; // Set the value to the question text
+        radioCell.appendChild(radioInput);
+        row.appendChild(radioCell);
 
         const questionCell = document.createElement('td');
         questionCell.textContent = chal.question;
@@ -232,13 +242,13 @@ function loadChallengeToTable() {
         tableBody.appendChild(row);
     });
 
-    // Adiciona a linha de inputs após todos os desafios serem carregados
     const inputRow = document.createElement('tr');
 
     const questionInputCell = document.createElement('td');
     const questionInput = document.createElement('input');
     questionInput.type = 'text';
     questionInput.id = 'question';
+    questionInputCell.colSpan = 2; 
     questionInputCell.appendChild(questionInput);
     inputRow.appendChild(questionInputCell);
 
@@ -258,10 +268,51 @@ function loadChallengeToTable() {
 
     tableBody.appendChild(inputRow);
 }
+  
+
+function addNewChallenge() {
+    const question = document.getElementById('question').value;
+    const answer = document.getElementById('answer').value;
+    const tip = document.getElementById('tip').value;
+    if (question.trim() === '' || answer.trim() === '' || tip.trim() === '') {
+        showPopupAlert('Por favor, preencha todos os campos.', 'error');
+        return;
+    }
+    const challenge = {
+        question,
+        answer,
+        tip
+    };
+    const challenges = JSON.parse(localStorage.getItem('challengeContents')) || [];
+    challenges.push(challenge);
+    localStorage.setItem('challengeContents', JSON.stringify(challenges));
+    location.reload()
+}
+
+function deleteSelectedChallenges() {
+    const selectedChallenges = document.querySelectorAll('input[name="selectedChallenge"]:checked');
+    if (selectedChallenges.length === 0) {
+        showPopupAlert('Por favor, selecione um desafio para apagar.', 'error');
+        return;
+    }
+
+    let challengeContents = JSON.parse(localStorage.getItem("challengeContents")) || [];
+
+    selectedChallenges.forEach(challenge => {
+        const question = challenge.value;
+        challengeContents = challengeContents.filter(chal => chal.question !== question);
+    });
+
+    localStorage.setItem("challengeContents", JSON.stringify(challengeContents));
+    loadChallengeToTable();
+    showPopupAlert('Desafios apagados com sucesso!', 'success');
+}
+
+document.getElementById('delete_challenge').addEventListener('click', deleteSelectedChallenges);
+
+document.getElementById('add_challenge').addEventListener('click', addNewChallenge )
 
 
-
-    // Ensure the admin check is before any other challenge actions
     if (!User.isLogged() || !User.getUserLogged().isAdmin) {
         showPopupAlert('Acesso negado', 'error').then(() => {
             window.location.href = '/codebuddy/index.html';
