@@ -58,7 +58,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     checkLoginStatus();
 
-    checkLoginStatus();
 
     // Abrir popup de login
     openPopupBtn.addEventListener('click', function() {
