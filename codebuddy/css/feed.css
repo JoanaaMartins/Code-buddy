@@ -12,7 +12,8 @@
     font-size: 50px; 
     font-weight: bold; 
     position: relative; 
-    background-color: #F39414;
+    background-color: #F39414; 
+    margin: 2%;
 } 
 
 
@@ -24,26 +25,19 @@
 
 .feed{   
     padding-left: 5%;
-    display: grid;  
-    grid-auto-flow: column; 
-    grid-auto-columns: 48%; 
-    overflow-x: auto; 
-    overscroll-behavior-inline:contain ; 
-    padding-bottom: 5%; 
-    scrollbar-width: none; /* Oculta a barra  no Firefox */
-    -ms-overflow-style: none; /* Oculta a barra no Internet Explorer e Edge */
+    display: flex;
+    
 }
     
-.feed::-webkit-scrollbar {
-    display: none; /* Oculta a barra no Chrome e Safari */
-}
+
     
 .projects{  
-    display: grid; 
-    margin-top: 8%; 
+    display: grid;  
+    margin: 5%;  
       
 }   
 
 .proj_img{ 
     height: 400px;
 }
+

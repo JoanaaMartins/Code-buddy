@@ -1,11 +1,6 @@
 export function getPosts() {
     const posts = [
         {
-            caminho: '/codebuddy/images/trabalhos/projeto_1.mp4',
-            link: null,
-            type: 'video'
-        },
-        {
             caminho: '/codebuddy/images/trabalhos/projeto_2.png',
             link: 'https://www.instagram.com/p/C5WT1vrMu3F/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA%3D%3D',
             type: 'image'
@@ -45,11 +40,6 @@ export function getPosts() {
             link: 'https://www.youtube.com/@esmad_pporto/playlists',
             type: 'image'
         },
-        {
-            caminho: '/codebuddy/images/trabalhos/projeto_10.mp4',
-            link: 'https://eventos.esmad.ipp.pt/plug-in/',
-            type: 'video'
-        }
     ];
 
     return posts;
