@@ -1,0 +1,43 @@
+    /* GALERIA */
+
+.events_container{ 
+    display: flex; 
+    align-items: baseline;   
+    padding-left: 5%;  
+    
+}  
+
+.events_titles{  
+    font-family: Jura; 
+    font-size: 50px; 
+    font-weight: bold; 
+    position: relative; 
+    background-color: #F39414; 
+    margin: 2%;
+} 
+
+
+.events_content{ 
+    padding-left: 5%;  
+    font-family: Space Mono; 
+    font-size: 24px; 
+}  
+
+.feed{   
+    padding-left: 5%;
+    display: flex;
+    
+}
+    
+
+    
+.projects{  
+    display: grid;  
+    margin: 5%;  
+      
+}   
+
+.proj_img{ 
+    height: 400px;
+}
+

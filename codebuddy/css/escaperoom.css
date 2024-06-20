@@ -1,0 +1,333 @@
+html {
+    height: 100vh;
+}
+
+
+* {
+    font-family: 'Jura';
+}
+
+.game_board {
+    justify-content: center;
+    margin-top: 10%;
+    display: grid;
+    grid-template-columns: repeat(6, 70px);
+    grid-template-rows: repeat(7, 70px);
+    gap: 30px;
+}
+
+#black_cell {
+    background-color: black;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+}
+
+#challange_cell {
+    background-color:#F39414;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+}
+
+#final_cell {
+    z-index:-1;
+    background-color: black;
+    border-radius: 10px;
+    transform: rotate(45deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.logo {
+    transform: rotate(-45deg);
+    width: 55px;
+}
+
+.present {
+    width: 40px;
+}
+
+.number {
+
+    background-color: #D9D9D9;
+    border-radius: 50%;
+    padding: 9px;
+    width: 40%;
+    height: 40%;
+}
+
+.start {
+    color: #F39414;
+    transform: rotate(-45deg);
+    font-size: 20px;
+}
+
+.player_board {
+    font-size: 25px;
+    width: 400px;
+    padding: 30px;
+    height: fit-content;
+    display: flex;
+    justify-content: space-around;
+    border:3px solid #F39414;
+}
+
+.player_points {
+    display: flex;
+    flex-direction: column;
+
+}
+
+body {
+    display: flex;
+    justify-content: space-evenly;
+    background-color:  #CACACA; ;
+}
+
+.orange_draw {
+        position: absolute;
+        z-index: -1;
+        width: 300px;
+        height: 300px;
+        left:650px;
+        top:700px;
+}
+
+.player_display {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 10%;
+}
+
+.dice_button {
+    background-color: #F39414;
+    border:none;
+    border-radius: 30px;
+    font-size: 25px;
+    width: fit-content;
+    padding: 10px 15px;
+}
+
+.dice_display {
+    height: 100px;
+    font-size: 25px;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.grey_draw {
+    position: absolute;
+    z-index: -1;
+    top:100px;
+    left:40px;
+    width:450px;
+    height: 300px;
+}
+
+.start_game {
+    display: flex;
+    justify-content: center;
+    background-color: #F39414;
+    align-self: center;
+    padding: 0px 10px;
+    margin-bottom: 30px;
+}
+
+.go_button {
+    align-self: flex-end;
+    background-color: white;
+    border: none;
+    border-radius: 50%;
+    width: 7%;
+}
+
+.board_name {
+    font-size: 25px;
+    background-color: #F39414;
+    padding: 0px 10px;
+}
+
+.available_pieces {
+    font-size: 25px;
+}
+
+.available_pieces * {
+    padding-right: 7px;
+    border: 3px solid transparent;
+}
+
+.player_name, .answer  {
+    font-size: 20px;
+    background-color: transparent;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+ .answer:focus {
+    outline: none;
+ }
+
+.player_name:focus {
+    outline: none;
+}
+
+ /*----------- popup -----------*/
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.popup-content {
+    background-color: #D9D9D9;
+    height: 30%;
+    margin: 10% auto;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    font-family: 'Montserrat';
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px;
+    font-size : 20px;
+    width: 40%;
+}
+
+.challenge_content{
+    background-color: #D9D9D9;
+    height: 30%;
+    margin: 10% auto;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    font-family: 'Montserrat';
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 30px 30px 10px 30px;
+    font-size : 20px;
+    width: 40%;
+
+}
+
+.piece_content {
+    background-color: #D9D9D9;
+    height: 30%;
+    margin: 10% auto;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    font-family: 'Montserrat';
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 30px;
+    font-size : 20px;
+    width: 40%;
+    align-items: center;
+}
+
+.piece:hover {
+    cursor :pointer;
+}
+
+
+
+
+.close_button, .close_challenge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 30px;
+    color: #333;  
+    cursor: pointer;
+  }
+
+
+.show_piece {
+    width: 50px;
+    display:flex;
+    justify-self: center;
+    align-self: center;
+}
+
+.pieces_display {
+    display: flex;
+    align-items: center;
+}
+
+.pieces_display * {
+    padding-left:10px;
+}
+
+#send {
+    align-self: flex-end;
+    background-color: #F39414;
+    width: 7%;
+    border:none;
+    border-radius: 50%;
+
+}
+
+.popup_img {
+    height:50%;
+}
+
+.padlock {
+    width: 45%;
+}
+
+.tip {
+    width:5%;
+    align-self: flex-end;
+    animation: jump 1s infinite;
+  }
+  
+  @keyframes jump {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-7px);
+    }
+  }
+
+  .shield {
+    width: 55%;
+  }
+
+.board_piece, .board_shield, .board_tip {
+    width: 35%;
+}
+
+
+.timer {
+    font-size: 30px;
+    margin-top: 3%; 
+    border: 3px solid;
+    padding: 5px;
+    height: fit-content;
+    box-sizing: border-box;
+    width: 7%; 
+    text-align: center; 
+  }
+
+.add_icons {
+    display: flex;
+    justify-content: flex-end;
+}
