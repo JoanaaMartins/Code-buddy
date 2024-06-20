@@ -209,7 +209,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 //perguntas
 function loadChallengeToTable() {
-    let challenge = JSON.parse(localStorage.getItem("challengeContents"))
+    let challenge = JSON.parse(localStorage.getItem("challengeContents"));
     const tableBody = document.getElementById('questions_table');
 
 
