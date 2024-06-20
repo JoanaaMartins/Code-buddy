@@ -1,6 +1,7 @@
 import * as User from "./models/userModel.js"; 
 import { getPosts } from "./views/feed.js";
 
+
 document.addEventListener("DOMContentLoaded", function() {
     const openSendNotif = document.getElementById('send_message');
     const messagePopup = document.getElementById('message_popup');
@@ -212,8 +213,6 @@ function loadChallengeToTable() {
     let challenge = JSON.parse(localStorage.getItem("challengeContents"));
     const tableBody = document.getElementById('questions_table');
 
-
-    
     challenge.forEach(chal => {
         const row = document.createElement('tr');
         row.classList.add('dataChallenge');
@@ -232,7 +231,35 @@ function loadChallengeToTable() {
 
         tableBody.appendChild(row);
     });
-} 
+
+    // Adiciona a linha de inputs após todos os desafios serem carregados
+    const inputRow = document.createElement('tr');
+
+    const questionInputCell = document.createElement('td');
+    const questionInput = document.createElement('input');
+    questionInput.type = 'text';
+    questionInput.id = 'question';
+    questionInputCell.appendChild(questionInput);
+    inputRow.appendChild(questionInputCell);
+
+    const answerInputCell = document.createElement('td');
+    const answerInput = document.createElement('input');
+    answerInput.type = 'text';
+    answerInput.id = 'answer';
+    answerInputCell.appendChild(answerInput);
+    inputRow.appendChild(answerInputCell);
+
+    const tipInputCell = document.createElement('td');
+    const tipInput = document.createElement('input');
+    tipInput.type = 'text';
+    tipInput.id = 'tip';
+    tipInputCell.appendChild(tipInput);
+    inputRow.appendChild(tipInputCell);
+
+    tableBody.appendChild(inputRow);
+}
+
+
 
     // Ensure the admin check is before any other challenge actions
     if (!User.isLogged() || !User.getUserLogged().isAdmin) {
