@@ -1,0 +1,49 @@
+    /* GALERIA */
+
+.events_container{ 
+    display: flex; 
+    align-items: baseline;   
+    padding-left: 5%;  
+    
+}  
+
+.events_titles{  
+    font-family: Jura; 
+    font-size: 50px; 
+    font-weight: bold; 
+    position: relative; 
+    background-color: #F39414;
+} 
+
+
+.events_content{ 
+    padding-left: 5%;  
+    font-family: Space Mono; 
+    font-size: 24px; 
+}  
+
+.feed{   
+    padding-left: 5%;
+    display: grid;  
+    grid-auto-flow: column; 
+    grid-auto-columns: 48%; 
+    overflow-x: auto; 
+    overscroll-behavior-inline:contain ; 
+    padding-bottom: 5%; 
+    scrollbar-width: none; /* Oculta a barra  no Firefox */
+    -ms-overflow-style: none; /* Oculta a barra no Internet Explorer e Edge */
+}
+    
+.feed::-webkit-scrollbar {
+    display: none; /* Oculta a barra no Chrome e Safari */
+}
+    
+.projects{  
+    display: grid; 
+    margin-top: 8%; 
+      
+}   
+
+.proj_img{ 
+    height: 400px;
+}
